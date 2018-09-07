@@ -1007,11 +1007,30 @@ select {
     .step__image {
       max-width: none; } }
 
+.step__image_team {
+  max-height: 130px;
+  max-width: 222px;
+  margin-top: 8pt;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none; }
+  @media (min-width: 600px) {
+    .step__image_team {
+      max-width: none; } }
+
 .step__text {
   max-width: 36ch;
   text-align: left;
   margin-left: auto;
   margin-right: auto; }
+
+  .step__text_team {
+    max-width: 36ch;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto; }
 
 .expanded {
   padding: 72pt 0; }
