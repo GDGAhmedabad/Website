@@ -4,6 +4,8 @@
 .idea
 **/node_modules/*
 **/.firebaserc
+.firebase/
+‘~/
 
 ### VisualStudioCode ###
 .vscode/*
