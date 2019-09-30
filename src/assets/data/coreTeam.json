@@ -61,5 +61,14 @@
         "github":"https://github.com/JaldeepAsodariya",
         "profileImage":"jaldeep_asodariya.png",
         "website":""
+    },
+    {
+        "name":"Hiren Dave",
+        "designation":"Event Organizer",
+        "twitter":"https://twitter.com/hjdave",
+        "linkedin":"https://www.linkedin.com/in/davehiren/",
+        "github":"",
+        "profileImage":"hiren_dave.jpg",
+        "website":"https://hirendave.tech"
     }
 ]

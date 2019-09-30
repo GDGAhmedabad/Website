@@ -1,21 +1,21 @@
 {
-    "FeatureEventName":"IWD'19 Ahmedabad",
-    "EventImage":"IWD.jpg",
+    "FeatureEventName":"GDG DevFest Ahmedabad 2019",
+    "EventImage":"devfestahm-2019.png",
     "EventDate":{
-        "Date":"28",
-        "Month":"4",
+        "Date":"12",
+        "Month":"10",
         "Year":"2019"
     },
     "EventTime":{
         "StartTime":"09:00 AM",
-        "EndTime":"05:00 PM"
+        "EndTime":"06:00 PM"
     },
-    "EventVenue":"SSIP I -Hub, KCG campus, Opp. PRL, Near LD college if engineering, Navrangpura, Ahmedabad",
-    "EventVenueMapLink":"https://www.google.com/maps/place/Knowledge+Consortium+Of+Gujarat/@23.0326795,72.541686,17z/data=!3m1!4b1!4m12!1m6!3m5!1s0x395e84ea88c100b5:0x24573f9b38f7cc3a!2sKnowledge+Consortium+Of+Gujarat!8m2!3d23.0326795!4d72.5438747!3m4!1s0x395e84ea88c100b5:0x24573f9b38f7cc3a!8m2!3d23.0326795!4d72.5438747",
-    "EventWebsite":"http://iwd.gdgahmedabad.com/",
-    "EventDescription":"International Women's Day (IWD) is marked on March 8th every year. In different regions, the focus of celebrations ranges from general respect and appreciation for women to a celebration of women's economic, political, and social achievements.",
-    "MeetupLink":"https://www.meetup.com/GDG-Ahmedabad/events/259979852/",
+    "EventVenue":"COURTYARD by Marriott, Satellite, Ahmedabad.",
+    "EventVenueMapLink":"https://www.google.com/maps/place/Courtyard+by+Marriott+Ahmedabad/@23.0278716,72.50994,17z/data=!3m1!4b1!4m8!3m7!1s0x395e9b36db2830a1:0xba2e70709c848c23!5m2!4m1!1i2!8m2!3d23.0278667!4d72.5121287",
+    "EventWebsite":"http://devfest.gdgahmedabad.com/",
+    "EventDescription":"Described by many as 'Google I/O of Ahmedabad', GDG DevFest Ahmedabad brings together the world class experts in Android, Web and Cloud technologies to Ahmedabad for sessions, workshops and showcases.",
+    "MeetupLink":"",
     "RegistrationLink":"",
-    "FBEventPageURL":"https://www.facebook.com/pg/WTMAhmedabad/photos/?tab=album&album_id=2241789085901579&ref=page_internal"
+    "FBEventPageURL":""
 }
 
