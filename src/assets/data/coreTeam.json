@@ -1,0 +1,74 @@
+[
+    {
+        "name":"Paresh Mayani",
+        "designation":"Founder & Organizer",
+        "twitter":"https://twitter.com/pareshmayani",
+        "linkedin":"https://www.linkedin.com/in/pareshmayani",
+        "github":"https://github.com/pareshmayani",
+        "profileImage":"paresh_mayani.png",
+        "website":""
+    },
+    {
+        "name":"Dhrumil Shah",
+        "designation":"Co-Organizer",
+        "twitter":"https://twitter.com/dhuma1981",
+        "linkedin":"https://www.linkedin.com/in/dhuma1981",
+        "github":"https://github.com/dhuma1981",
+        "profileImage":"dhrumil_shah.png",
+        "website":""
+    },
+    {
+        "name":"Pratik Patel",
+        "designation":"Co-Organizer",
+        "twitter":"https://twitter.com/patel8490",
+        "linkedin":"",
+        "github":"",
+        "profileImage":"pratik_patel.png",
+        "website":""
+    },
+    {
+        "name":"Chintan Rathod",
+        "designation":"Co-Organizer",
+        "twitter":"https://twitter.com/chintanrathod16",
+        "linkedin":"https://www.linkedin.com/in/chintan-rathod/",
+        "github":"https://github.com/ChintanRathod",
+        "profileImage":"chintan_rathod.png",
+        "website":""
+    },
+    {
+        "name":"Utpal Betai",
+        "designation":"Asst. Organizer",
+        "twitter":"https://twitter.com/utpalbetai",
+        "linkedin":"https://www.linkedin.com/in/utpalbetai/",
+        "github":"",
+        "profileImage":"utpal_betai.png",
+        "website":""
+    },
+    {
+        "name":"Dhruva Shastri",
+        "designation":"WTM Ambassador",
+        "twitter":"https://twitter.com/dhruvashastri12",
+        "linkedin":"https://www.linkedin.com/in/dhruvashastri12/",
+        "github":"",
+        "profileImage":"dhruva_shashtri.png",
+        "website":""
+    },
+    {
+        "name":"Jaldeep Asodariya",
+        "designation":"Event Organizer",
+        "twitter":"https://twitter.com/JaldeepAsodariy",
+        "linkedin":"https://www.linkedin.com/in/jaldeepasodariya/",
+        "github":"https://github.com/JaldeepAsodariya",
+        "profileImage":"jaldeep_asodariya.png",
+        "website":""
+    },
+    {
+        "name":"Hiren Dave",
+        "designation":"Event Organizer",
+        "twitter":"https://twitter.com/hjdave",
+        "linkedin":"https://www.linkedin.com/in/davehiren/",
+        "github":"",
+        "profileImage":"hiren_dave.jpg",
+        "website":"https://hirendave.tech"
+    }
+]
