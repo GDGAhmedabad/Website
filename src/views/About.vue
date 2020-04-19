@@ -1,68 +1,78 @@
+
 <template>
-  <v-content class="pa-0">
-
-    <v-container fluid class="mt-2 mb-0">
-      <v-layout wrap align-center justify-center row fill-height class="my-0">
-        <v-flex xs12 md10 class="mb-0">
-            <p class="google-font mb-0 mt-0" style="font-size:200%;color:#616161">About {{ChapterDetails.ChapterName}}</p>
-            
-        </v-flex>
-      </v-layout>
+  <v-content class="px-0 mx-0 pt-5">
+    <v-container fluid class="px-0 pt-5 mt-5 py-0">
+      <v-row justify="center" align="center">
+        <v-col md="11" lg="10" sm="11" xs="12" class="pt-3">
+          <aboutHeader />
+        </v-col>
+      </v-row>
     </v-container>
 
-    <v-container fluid class="">
-      <v-layout wrap align-center justify-center row fill-height>
-        <v-flex xs12 md10 class="">
-          <aboutGDGChapter/>
-        </v-flex>
-      </v-layout>
+    <v-container fluid class="px-0 py-0">
+      <v-row justify="center" align="center">
+        <v-col md="11" lg="10" sm="11" xs="12" class>
+          <aboutCommunity :data="config.generalConfig" />
+        </v-col>
+      </v-row>
     </v-container>
 
-    <v-container fluid class="grey lighten-5 pt-5 pb-1">
-      <v-layout wrap align-center justify-center row fill-height>
-        <v-flex xs12 md10 class="">
-          <contactInfo/>
-        </v-flex>
-      </v-layout>
+    <v-container fluid class="pa-0 py-0 my-0">
+      <v-row
+        justify="center"
+        align="center"
+        :class="this.$vuetify.theme.dark == true?'grey darken-4':'grey lighten-4'"
+        class="py-5"
+      >
+        <v-col md="11" lg="10" sm="11" xs="12" class="py-0">
+          <communityGuidelines :data="communityGudielines" />
+        </v-col>
+      </v-row>
     </v-container>
 
-    <v-container fluid class="grey lighten-5 py-2 pt-0">
-      <v-layout wrap align-center justify-center row fill-height>
-        <v-flex xs12 md10 class="">
-          <coc/>
-        </v-flex>
-      </v-layout>
+    <v-container fluid class="pa-0 py-0 my-0">
+      <v-row justify="center" align="center" class="py-5">
+        <v-col md="11" lg="10" sm="11" xs="12" class="py-0 mb-5">
+          <coc :data="coc" />
+          <antiHarassmentPolicy :data="config.generalConfig.name" />
+        </v-col>
+      </v-row>
     </v-container>
-
-    <v-container fluid class="grey lighten-5 py-2">
-      <v-layout wrap align-center justify-center row fill-height>
-        <v-flex xs12 md10 class="">
-          <AntiHarassmentPolicy/>
-        </v-flex>
-      </v-layout>
-    </v-container>
-
   </v-content>
-  
 </template>
 
 <script>
-import ChapterDetails from '@/assets/data/chapterDetails.json'
-import aboutGDGChapter from '@/components/about/aboutGDGChapter'
-import contactInfo from '@/components/about/contactInfo'
-import coc from '@/components/about/coc'
-import AntiHarassmentPolicy from '@/components/about/AntiHarassmentPolicy'
-  export default {
-    components: {
-      aboutGDGChapter,
-      contactInfo,
-      coc,
-      AntiHarassmentPolicy
-    },
-    data() {
-      return {
-        ChapterDetails: ChapterDetails
-      }
-    },
+import service from "@/services/appservices";
+import { mapState } from "vuex";
+
+export default {
+  components: {
+    aboutCommunity: () => import("@/components/about/AboutCommunity"),
+    aboutHeader: () => import("@/components/about/AboutHeader"),
+    communityGuidelines: () => import("@/components/about/CommunityGuidelines"),
+    coc: () => import("@/components/about/COC"),
+    antiHarassmentPolicy: () => import("@/components/about/AntiHar")
+  },
+  computed: {
+    ...mapState(["config"])
+  },
+  data: () => ({
+    loading: true,
+    communityGudielines: [],
+    coc: ""
+  }),
+  mounted() {
+    this.getCommunityGuidelinesData();
+  },
+  methods: {
+    getCommunityGuidelinesData() {
+      service.getCommunityGuidelines().then(res => {
+        if (res.success) {
+          this.coc = res.data.codeOfConduct;
+          this.communityGudielines = res.data.communityGuidelines;
+        }
+      });
+    }
   }
+};
 </script>

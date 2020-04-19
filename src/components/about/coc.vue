@@ -1,30 +1,24 @@
 <template>
-    <v-container class="pa-0 my-0">
-        <v-layout wrap align-start justify-start row fill-height class="my-0" >
-     
-            <v-flex xs12 md8 lg8 class="pa-2 my-0">
-                <p class="google-font" style="font-size:180%;color:#0277bd">Code of conduct</p>
-
-                <p class="google-font" style="font-size:110%">{{aboutPage.coc}}</p>
-            </v-flex> 
-           
-            <v-flex xs12 md4 lg4 class="pa-2 hidden-sm-and-down">
-                
-            </v-flex>
-        </v-layout>
-
+    <v-container fluid class="py-0 my-0 mt-3">
+        <v-row class="py-0 my-0">
+            <v-col md="12" sm="12" cols="12" class="py-0 my-0">
+                <h1 class="google-font mb-2">Code of conduct</h1>
+            </v-col>
+        </v-row>
+        <v-row class="py-0 my-0">
+            <v-col md="8" sm="12" cols="12" class="py-0 my-0">
+                <p class="google-font" style="font-size:110%">{{data}}</p>
+            </v-col>
+            
+        </v-row>
     </v-container>
 </template>
 
 <script>
-import ChapterDetails from '@/assets/data/chapterDetails.json'
-import aboutPage from '@/assets/data/aboutPage.json'
 export default {
-    data() {
-        return {
-            chapterDetails: ChapterDetails,
-            aboutPage:aboutPage
-        }
-    },
+    props:['data'],
+    data:()=>({
+
+    })
 }
 </script>

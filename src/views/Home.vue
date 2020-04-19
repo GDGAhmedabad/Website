@@ -1,90 +1,115 @@
 <template>
-  <v-content class="pa-0">
-
-    <v-container fluid class="my-4">
-      <v-layout wrap align-center justify-center row fill-height class="">
-        <v-flex xs12 md10 >
-          <HomeStartScreen />
-        </v-flex>
-      </v-layout>
-    </v-container>
-
-    <v-container fluid style="background-color:#F9F9F9" >
-      <v-layout wrap align-center justify-center row fill-height>
-        <v-flex xs12 md10 class="">
-          <whatWeDo />
-        </v-flex>
-      </v-layout>
-    </v-container>
-
-    <v-container fluid style="background-color:#4C4A78" >
-      <v-layout wrap align-center justify-center row fill-height>
-        <v-flex xs12 md10 class="">
-          <AboutGDGChapter />
-        </v-flex>
-      </v-layout>
-    </v-container>
-
-    <v-container fluid >
-      <v-layout wrap align-center justify-center row fill-height>
-        <v-flex xs12 md10 class="">
-          <eventshowcase />
-        </v-flex>
-      </v-layout>
-    </v-container>
-  
-    <v-container fluid class="py-5" style="background-color:#F9F9F9">
-      <v-layout wrap align-start justify-start row fill-height>
-        <v-flex xs12 md10 offset-md1 offset-lg1 >
-          <p class="google-font mb-2" style="font-size:150%">Our Feature Event & Meetup</p>
-        </v-flex>
-        <v-flex xs12 md10 offset-md1 offset-lg1 >
-          <featureEvent />
-        </v-flex>
-      </v-layout>
-    </v-container>
+  <v-content class="ma-0">
     
-     <!-- <v-container fluid >
-      <v-layout wrap align-center justify-center row fill-height>
-        <v-flex xs12 md10>
-          <wtmInfo />
-        </v-flex>
-      </v-layout>
-    </v-container> -->
+    <v-container fluid class="">
+      <v-row justify="center" align="center">
+        <v-col md="12" lg="10" sm="11" xs="12" class="">
+          <HomeStartScreen/>
+        </v-col>
+      </v-row>
+    </v-container>
 
-    <v-container fluid >
-      <v-layout wrap align-center justify-center row fill-height>
-        <v-flex xs12 md10>
+    <v-container fluid class="pa-0 py-0 my-0" >
+      <v-row justify="center" align="center">
+        <v-col md="12" sm="11" lg="10" xs="12" class="py-0" :class="this.$vuetify.theme.dark == true?'darkModeContainer':'lightModeContainer'">
+          <whatwedo />
+        </v-col>
+      </v-row>
+    </v-container>
+
+    <v-container fluid class="pa-0 pt-5 my-0" >
+      <v-row justify="center" align="center" style="background:#4C4A78" class="py-5 my-0">
+        <v-col md="12" lg="10" sm="11" xs="12" class="py-0" >
+          <AboutCommunity />
+        </v-col>
+      </v-row>
+    </v-container>
+
+     <v-container fluid class="pa-0 py-2" v-if="checkExistance(config.keysandsecurity.meetup,0)">
+      <v-row justify="center" align="center">
+        <v-col md="12" sm="11" lg="10" xs="12" class="py-0">
+          <events />
+        </v-col>
+      </v-row>
+    </v-container>
+
+    <v-container fluid class="pa-0 py-0" v-if="showFeatureEventStatus">
+      <v-row justify="center" align="center" class="py-5" :class="this.$vuetify.theme.dark == true?'grey darken-4':'grey lighten-4'">
+        <v-col md="12" sm="11" lg="10" xs="12" class="py-0">
+          <featureEvents />
+        </v-col>
+      </v-row>
+    </v-container>
+
+     <v-container fluid class="pa-0 py-2 " >
+      <v-row justify="center" align="center">
+        <v-col md="12" lg="10" xs="12" class="py-0">
           <partners />
-        </v-flex>
-      </v-layout>
+        </v-col>
+      </v-row>
     </v-container>
-
-    
-
+    <v-container fluid class="pa-0 py-2 hidden-md-and-up" >
+      <v-row justify="center" align="center">
+        <v-col md="12" lg="10" xs="12" class="py-0">
+          <br><br>
+        </v-col>
+      </v-row>
+    </v-container>
 
   </v-content>
   
 </template>
 
 <script>
-  import HomeStartScreen from '@/components/home/HomeStartScreen'
-  import whatWeDo from '@/components/home/whatWeDo'
-  import AboutGDGChapter from '@/components/home/AboutGDGChapter'
-  import eventshowcase from '@/components/home/eventshowcase'
-  // import wtmInfo from '@/components/home/wtmInfo'
-  import partners from '@/components/home/partners'
-  import featureEvent from '@/components/home/featureEvent'
-  
-  export default {
-    components: {
-      HomeStartScreen,
-      whatWeDo,
-      AboutGDGChapter,
-      eventshowcase,
-      // wtmInfo,
-      partners,
-      featureEvent
+import service from '@/services/appservices'
+import { mapState } from "vuex";
+
+export default {
+  name: 'Home',
+  components: {
+    HomeStartScreen:()=>import('@/components/home/HomeStartScreen'),
+    whatwedo:()=>import('@/components/home/WhatWeDo'),
+    AboutCommunity:()=>import('@/components/home/AboutCommunity'),
+    events:()=>import('@/components/home/Events'),
+    featureEvents:()=>import('@/components/home/FeaturesEvents'),
+    partners:()=>import('@/components/common/Partners')
+  },
+  data:()=>({
+    showFeatureEventStatus:false
+  }),
+  mounted(){
+    this.getFeaturesEventID();
+  },
+  computed:{
+    ...mapState(["config"])
+  },
+  methods:{
+    getFeaturesEventID(){
+      service.getFeaturesEvents().then(res=>{
+          if(res.success){
+            if(res.data.length>0){
+              this.showFeatureEventStatus = true
+            }else{
+              this.showFeatureEventStatus = false
+            }
+          }else{
+              this.notFound = true
+          }
+      })
     }
   }
+}
 </script>
+
+<style scoped>
+  .lightModeContainer{
+      background-color:#F9F9F9;
+      border:1px solid #e0e0e0;
+      border-radius:5px
+  }
+  .darkModeContainer{
+      background-color:#292929;
+      border:1px solid #212121;
+      border-radius:5px
+  }
+</style>

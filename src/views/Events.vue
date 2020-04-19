@@ -1,48 +1,41 @@
 <template>
-  <v-content class="pa-0">
-
-    <v-container fluid class="pt-3 mb-0 grey lighten-5">
-      <v-layout wrap align-center justify-center row fill-height class="my-0">
-        <v-flex xs12 md10 class="my-0">
-            <p class="google-font mb-0" style="font-size:200%;color:#0277bd">{{ChapterDetails.ChapterName}}'s Events</p>
-            <p class="google-font mt-0 mb-0" style="font-size:110%">Questions? Please contact {{ChapterDetails.ChapterEmail}}.</p>
-        </v-flex>
-      </v-layout>
-    </v-container>
-
-    <v-container fluid class="grey lighten-5">
-      <v-layout wrap align-center justify-center row fill-height>
-        <v-flex xs12 md10 class="">
-          <upcommingEvents/>
-        </v-flex>
-      </v-layout>
-    </v-container>
-
-    <v-container fluid class="" >
-      <v-layout wrap align-center justify-center row fill-height>
-        <v-flex xs12 md10 class="">
-          <pastEvents/>
-        </v-flex>
-      </v-layout>
-    </v-container>
-
-  </v-content>
-  
+    <v-content class="px-0 mx-1">
+        <v-container fluid class="pa-0">
+            <v-row justify="center" align="center" :class="this.$vuetify.theme.dark == true?'grey darken-4':'grey lighten-4'" class="py-0 my-0">
+                <v-col md="12" lg="10" sm="11" xs="12" class="py-3 my-0" >
+                    <eventsHeader /> 
+                    <upcomingMeetupsEvents v-if="checkExistance(config.keysandsecurity.meetup,0)" />
+                    <featureEvents v-else />
+                </v-col>
+            </v-row>
+        </v-container>
+        <v-container fluid class="pa-0 py-2" >
+            <v-row justify="center" align="center">
+                <v-col md="12" lg="10" sm="11" xs="12" class="py-0" >
+                    <pastMeetupsEvents v-if="checkExistance(config.keysandsecurity.meetup,0)" />
+                    <customPastEvents v-else/>
+                </v-col>
+            </v-row>
+        </v-container>
+    </v-content>
 </template>
 
 <script>
-import ChapterDetails from '@/assets/data/chapterDetails.json'
-import upcommingEvents from '@/components/events/upcomingEvents'
-import pastEvents from '@/components/events/pastEvents'
-  export default {
-    components: {
-      upcommingEvents,
-      pastEvents
+import { mapState } from "vuex";
+
+export default {
+    components:{
+        eventsHeader:()=>import('@/components/events/EventHeader'),
+        upcomingMeetupsEvents:()=>import('@/components/events/UpcomingEvents'),
+        pastMeetupsEvents:()=>import('@/components/events/PastEvents'),
+        featureEvents:()=>import('@/components/home/FeaturesEvents'),
+        customPastEvents:()=>import('@/components/events/CustomPastEvents')
     },
-    data() {
-      return {
-        ChapterDetails: ChapterDetails
-      }
+    computed:{
+        ...mapState(["config"])
     },
-  }
+    data:()=>({
+
+    })
+}
 </script>

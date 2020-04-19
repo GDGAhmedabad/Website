@@ -1,21 +1,20 @@
 import Vue from 'vue'
-import './plugins/vuetify'
 import App from './App.vue'
+import './registerServiceWorker'
 import router from './router'
 import store from './store'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
-import './registerServiceWorker'
-import 'roboto-fontface/css/roboto/roboto-fontface.css'
-import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import vuetify from './plugins/vuetify';
+import generalFunctions from './functions/generalFunctions'
 import './style.css'
-import './filters/truncate'
 
-Vue.use(VueAxios, axios)
+
+
+
 Vue.config.productionTip = false
-
+Vue.mixin(generalFunctions); 
 new Vue({
   router,
   store,
+  vuetify,
   render: h => h(App)
 }).$mount('#app')

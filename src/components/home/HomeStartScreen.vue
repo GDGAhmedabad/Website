@@ -1,53 +1,83 @@
 <template>
-    <v-container class="pa-0">
-        <v-layout wrap align-center justify-center row fill-height >
-           <v-flex xs12 sm5 md3 lg3 xl3 class="text-xs-center pa-3">
-                <v-img
-                    :src="require('@/assets/img/gdg.jpg')"
-                    :lazy-src="require('@/assets/img/gdg.jpg')"
-                    width="100%">
-                    <v-layout
-                        slot="placeholder"
-                        fill-height
-                        align-center
-                        justify-center
-                        ma-0
-                    >
-                        <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
-                    </v-layout>
-                </v-img>
-            </v-flex> 
-            <v-flex xs12 sm7 md8 lg8 xl8 class="">
-                <p class="google-font mb-1" style="font-weight: 350;color: #616161;font-size:300%"><b>Make good things 
-                    <span style="color: #1a73e8;">together</span>.</b>
-                </p>
-                <p class="google-font mt-0" style="font-size:180%">{{chapterDetails.ChapterName}}</p>
-                <p class="google-font" style="font-size:110%">{{chapterDetails.ChapterShortDescription}}</p>
-                <p class="google-font" style="font-size:110%;color:#9e9e9e">
-                    <span v-for="(item,i) in chapterDetails.ChapterHashTags" :key="i">
-                        #{{item}} &nbsp;
-                    </span>
-                </p>
+  <v-container fluid class="py-0">
+    <v-row align="center" class="fill-height">
+      <v-col md="3" sm="6" cols="12" class>
+        <v-img
+          :src="require('@/assets/img/svg/home.svg')"
+          :lazy-src="require('@/assets/img/svg/home.svg')"
+          width="100%"
+        >
+          <template v-slot:placeholder>
+            <v-row class="fill-height ma-0" align="center" justify="center">
+              <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+            </v-row>
+          </template>
+        </v-img>
+      </v-col>
+      <v-col md="9" sm="6" cols="12" class="px-0">
+        <p
+          class="google-font mb-1"
+          :class="$vuetify.theme.dark == true?'dark-font-color':'light-font-color'"
+          style="font-weight: 350;font-size:230%"
+        >
+          <b>
+            Make good things
+            <span style="color: #1a73e8;">together</span>.
+          </b>
+        </p>
+        <p class="google-font mt-0 mb-0" style="font-size:150%">{{config.generalConfig.name}}</p>
+        <p class="google-font" style="font-size:100%">{{config.generalConfig.shortDescription}}</p>
+        <p class="google-font" style="font-size:100%;color:#9e9e9e">
+          <span v-for="(item,i) in config.generalConfig.hashtags" :key="i">
+            <v-chip
+              :href="'https://twitter.com/hashtag/'+item"
+              target="_blank"
+              small
+              class="mr-1"
+            >#{{item}}</v-chip>
+            <!-- &nbsp; -->
+          </span>
+        </p>
 
-                <v-btn :href="chapterDetails.ChapterMeetupLink" target="_blank" class="ma-0 google-font elevation-1" color="#1a73e8" style="text-transform: capitalize;border-radius:5px;color:white">Become a Member</v-btn>
-
-                &nbsp;
-
-                <v-btn :href="chapterDetails.GDGProgramWebsite" target="_blank" round color="cyan" style="text-transform: capitalize;border-radius:5px;text-transform: capitalize;" outline  class="ml-0" dark>Learn More</v-btn>
-
-            </v-flex>
-        </v-layout>
-
-    </v-container>
+        <v-btn
+          v-if="checkExistance(config.generalConfig.becomemember,0)"
+          :href="config.generalConfig.becomemember"
+          target="_blank"
+          class="ma-0 google-font elevation-1 primary mr-2"
+          style="text-transform: capitalize;border-radius:5px;color:white"
+        >Become a Member</v-btn>
+        <v-btn
+          v-if="checkExistance(config.generalConfig.learnMoreLink,0)"
+          :href="config.generalConfig.learnMoreLink"
+          target="_blank"
+          rounded
+          color="cyan"
+          style="text-transform: capitalize;border-radius:5px;text-transform: capitalize;"
+          outlined
+          class="ml-0"
+          dark
+        >Learn More</v-btn>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
-import ChapterDetails from '@/assets/data/chapterDetails.json'
+import { mapState } from "vuex";
+
 export default {
-    data() {
-        return {
-            chapterDetails: ChapterDetails
-        }
-    },
-}
+  data: () => ({}),
+  computed: {
+    ...mapState(["config"])
+  }
+};
 </script>
+
+<style scoped>
+.dark-font-color {
+  color: white;
+}
+.light-font-color {
+  color: #616161;
+}
+</style>
