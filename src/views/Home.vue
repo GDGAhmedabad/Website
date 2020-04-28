@@ -9,13 +9,13 @@
       </v-row>
     </v-container>
 
-    <v-container fluid class="pa-0 py-0 my-0" >
+    <!-- <v-container fluid class="pa-0 py-0 my-0" >
       <v-row justify="center" align="center">
         <v-col md="12" sm="11" lg="10" xs="12" class="py-0" :class="this.$vuetify.theme.dark == true?'darkModeContainer':'lightModeContainer'">
           <whatwedo />
         </v-col>
       </v-row>
-    </v-container>
+    </v-container> -->
 
     <v-container fluid class="pa-0 pt-5 my-0" >
       <v-row justify="center" align="center" style="background:#4C4A78" class="py-5 my-0">
@@ -68,7 +68,7 @@ export default {
   name: 'Home',
   components: {
     HomeStartScreen:()=>import('@/components/home/HomeStartScreen'),
-    whatwedo:()=>import('@/components/home/WhatWeDo'),
+    // whatwedo:()=>import('@/components/home/WhatWeDo'),
     AboutCommunity:()=>import('@/components/home/AboutCommunity'),
     events:()=>import('@/components/home/Events'),
     featureEvents:()=>import('@/components/home/FeaturesEvents'),
