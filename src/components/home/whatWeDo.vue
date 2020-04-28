@@ -8,7 +8,7 @@
           style="font-size:95%"
         >Google Developer Groups (GDGs) are for developers who are interested in Google's developer technology.</p>
         <p class="google-font" style="font-size:95%">About different Google technologies</p>
-        <span v-for="(item,i) in whatwedodata" :key="i">
+        <!-- <span v-for="(item,i) in whatwedodata" :key="i">
           <v-tooltip bottom>
             <template v-slot:activator="{ on }">
               <a :href="item.link" target="_blank" class="ma-0 mx-3">
@@ -18,7 +18,7 @@
             </template>
             <span>{{item.TechName}}</span>
           </v-tooltip>
-        </span>
+        </span> -->
       </v-col>
       <v-col cols="12" md="9" lg="9" sm="8">
         <v-container fluid>
@@ -63,11 +63,11 @@
 </template>
 
 <script>
-import whatwedodata from "@/assets/data/whatwedo.json";
+// import whatwedodata from "@/assets/data/whatwedo.json";
 export default {
   name: "App",
   data: () => ({
-    whatwedodata: whatwedodata
+    // whatwedodata: whatwedodata
   }),
   methods: {
     getImgUrl(url) {
