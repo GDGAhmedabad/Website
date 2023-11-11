@@ -1,11 +1,12 @@
-  
+
 @font-face {
     font-family: google-sans;
     src: url(assets/fonts/google-font.woff2);
+    font-display: swap;
 }
 .google-font{
-    font-family: google-sans
-};
+    font-family: google-sans;
+}
 html{
     overflow-x: hidden;
 }
@@ -15,7 +16,7 @@ body{
 
 .card-light{
     background: white;
-    border:1px solid #e0e0e0 !important; 
+    border:1px solid #e0e0e0 !important;
     border-radius:5px
 }
 

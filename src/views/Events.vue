@@ -6,7 +6,6 @@
                     <eventsHeader /> 
                     <upcomingMeetupsEvents v-if="checkExistance(config.keysandsecurity.meetup,0)" />
                     <featureEvents v-else />
-                    <featureEvents />
                 </v-col>
             </v-row>
         </v-container>
@@ -15,7 +14,6 @@
                 <v-col md="12" lg="10" sm="11" xs="12" class="py-0" >
                     <pastMeetupsEvents v-if="checkExistance(config.keysandsecurity.meetup,0)" />
                     <customPastEvents v-else/>
-                    <customPastEvents />
                 </v-col>
             </v-row>
         </v-container>
