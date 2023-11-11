@@ -24,3 +24,6 @@ yarn-error.log*
 *.sw?
 *.cache
 *.cache
+
+# Custom
+src/config/key.js
