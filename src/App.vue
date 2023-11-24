@@ -8,9 +8,9 @@
         <v-icon>mdi-close</v-icon>
       </v-btn>
     </v-snackbar>
-    <Toolbar v-if="!noData"/>
-    <Drawer v-if="!noData"/>
-    <BottomNav v-if="!noData"/>
+    <Toolbar v-if="!noData && !$route.meta.isEvent"/>
+    <Drawer v-if="!noData && !$route.meta.isEvent"/>
+    <BottomNav v-if="!noData && !$route.meta.isEvent"/>
     <v-content class="" v-if="isLoading">
       <v-container class="fill-height">
         <v-row justify="center" align="center" class>
@@ -25,12 +25,13 @@
         <v-row justify="center" align="center" class>
           <v-col cols="12" md="12" class="text-center">
             <p class="google-font">Either Your Internet is not Working or Site is not Configured</p>
+            <p class="google-font">Follow the Docs for <a target="_blank" href="https://github.com/gdg-x/aura" >Aura</a> & <a target="_blank" href="https://github.com/gdg-x/aura-admin">Aura Admin</a></p>
           </v-col>
         </v-row>
       </v-container>
     </v-content>
     <Views v-if="!isLoading && !noData" />
-    <Footer v-if="!noData"/>
+    <Footer v-if="!noData && !$route.meta.isEvent"/>
   </v-app>
 </template>
 

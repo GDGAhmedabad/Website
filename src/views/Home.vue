@@ -1,6 +1,6 @@
 <template>
   <v-content class="ma-0">
-    
+
     <v-container fluid class="">
       <v-row justify="center" align="center">
         <v-col md="12" lg="10" sm="11" xs="12" class="">
@@ -57,7 +57,7 @@
     </v-container>
 
   </v-content>
-  
+
 </template>
 
 <script>
@@ -86,15 +86,11 @@ export default {
   methods:{
     getFeaturesEventID(){
       service.getFeaturesEvents().then(res=>{
-          if(res.success){
-            if(res.data.length>0){
-              this.showFeatureEventStatus = true
-            }else{
-              this.showFeatureEventStatus = false
-            }
-          }else{
-              this.notFound = true
-          }
+          (res.success) ?
+            (res.data.length>0) ?
+              this.showFeatureEventStatus = true :
+                this.showFeatureEventStatus = false
+            : this.notFound = true
       })
     }
   }
